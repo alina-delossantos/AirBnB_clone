@@ -28,3 +28,29 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = self.created_at
             models.storage.new(self)
+
+    def __str__(self):
+        """Return the instance's ID, class name, and attributes as a string"""
+
+        return '[{}] ({}) {}'.format(
+            type(self).__name__,
+            self.id,
+            str(self.__dict__)
+        )
+
+    def save(self):
+        """ Save the object into .json file and updates the attribute
+        'updated_at' with current time"""
+        
+        self.updated_at = datetime.now()
+        models.storage.save()
+
+    def to_dict(self):
+        """Returns a dictionary containing all keys/values of __dict__ of the instance"""
+        
+        dictionary = dict(self.__dict__)
+        dictionary["__class__"] = type(self).__name__
+        dictionar["created_at"] = self.created_at.isoformat()
+        dictionary["updated_at"] = self.updated_at.isoformat()
+        return dictionary
+
