@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
+
 """ Creation of class base_model """
-from unittest.loader import VALID_MODULE_NAME
 from uuid import uuid4
 from datetime import datetime
 import models
