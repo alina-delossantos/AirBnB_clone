@@ -9,3 +9,11 @@ class Amenity(BaseModel):
         name (str): Amenity name.
     """
     name = ""
+
+    def __init__(self, *args, **kwargs):
+        """ Initialize Amenity
+            Args:
+                *args: list of strings
+                **kwargs: dictionary of strings
+        """
+        super().__init__(*args, **kwargs)
