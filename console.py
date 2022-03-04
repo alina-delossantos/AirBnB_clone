@@ -30,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
     """ HBNH console """
     prompt = '(hbnb) '
 
-""" definition to implemente EOF, quit and emptyline commands"""   
+    """ definition to implemente EOF, quit and emptyline commands"""
     def do_EOF(self, args):
         """Handles End Of File character\n"""
         return True
@@ -42,7 +42,6 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """ pass line """
         pass
-
 
     def do_create(self, args):
         """ Creates a new instance of BaseModel, saves it
@@ -56,14 +55,14 @@ class HBNBCommand(cmd.Cmd):
             arguments = args.split()
         if args == "" or args is None:
             print("** class name missing **")
-	    return		
+            return
         elif args not in storage.classes():
             print("** class doesn't exist **")
-	    return
+            return
 
         obj = models.classes[args]()
         models.storage.save()
-        self.__print(obj.id)   
+        self.__print(obj.id)
 
     def do_show(self, args):
             """ Prints the string representation of an instance
@@ -71,9 +70,9 @@ class HBNBCommand(cmd.Cmd):
                     show [name] [id]
             Example:
                     $ show BaseModel 1234-1234-1234"""
-            
+
             arguments = args.split()
-	        if not args:
+            if not args:
                 print("** class name missing **")
                 return
             elif arguments[0] not in storage.classes():
@@ -82,8 +81,8 @@ class HBNBCommand(cmd.Cmd):
             elif len(arguments) == 1:
                 print("** instance id missing **")
                 return
-             else:
-                 key = args[0] + "." + args[1]
+            else:
+                key = args[0] + "." + args[1]
                 if key in models.storage.all():
                     print(models.storage.all()[key])
                 else:
@@ -108,12 +107,11 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             key = "{}.{}".format(arguments[0], arguments[1])
-                if key not in storage.all():
+            if key not in storage.all():
                     print("** no instance found **")
-                else:
+            else:
                     del storage.all()[key]
                     storage.save()
-
 
     def do_all(self, args):
         """Prints all string representation of all instances based
@@ -141,7 +139,7 @@ class HBNBCommand(cmd.Cmd):
             update <class name> <id> <at name> "<at value>
         Example:
             $ update User 1234-1234-1234 email "aibnb@hbtn.com
-        """                       
+        """
         arguments = args.split(" ")
         if len(args) == 0:
             print("** class name missing **")
@@ -169,7 +167,7 @@ class HBNBCommand(cmd.Cmd):
 """
  TODO
  def default(self, args):
- def do_count(self, args):    
+ def do_count(self, args):
 """
 
 if __name__ == '__main__':
