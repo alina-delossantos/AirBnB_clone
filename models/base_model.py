@@ -7,7 +7,7 @@ import models
 
 
 class BaseModel:
-    """ BaseModel that defines all common attributes/methods for other classes """
+    """ BaseModel defines all common attributes/methods for other classes """
 
     def __init__(self, *args, **kwargs):
         """Initialization of a Base instance.
@@ -18,7 +18,7 @@ class BaseModel:
         if kwargs:
             time = "%Y-%m-%dT%H:%M:%S.%f"
             for key, value in kwargs.items():
-            if key == 'created_at' or key == 'updated_at':
+                if key == 'created_at' or key == 'updated_at':
                     setattr(self, key, datetime.strptime(value, time))
                     continue
                 if key != '__class__':
@@ -41,16 +41,15 @@ class BaseModel:
     def save(self):
         """ Save the object into .json file and updates the attribute
         'updated_at' with current time"""
-        
+
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """Returns a dictionary containing all keys/values of __dict__ of the instance"""
-        
+        """Returns dictionary with keys/values of __dict__ of the instance"""
+
         dictionary = dict(self.__dict__)
         dictionary["__class__"] = type(self).__name__
         dictionar["created_at"] = self.created_at.isoformat()
         dictionary["updated_at"] = self.updated_at.isoformat()
         return dictionary
-
