@@ -8,48 +8,51 @@ import models
 
 class BaseModel:
     """ BaseModel defines all common attributes/methods for other classes """
-
+    
     def __init__(self, *args, **kwargs):
-        """Initialization of a Base instance.
+         """Initialization of a Base instance.
         Args:
             - *args: list of arguments
             - **kwargs: dict of key-values arguments
         """
-        if kwargs:
-            time = "%Y-%m-%dT%H:%M:%S.%f"
+	self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+        if len(kwargs) > 0:
             for key, value in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
-                    setattr(self, key, datetime.strptime(value, time))
-                    continue
-                if key != '__class__':
-                    setattr(self, key, value)
+                if key == 'created_at':
+                    self.created_at = datetime.strptime(value,
+                                                        '%Y-%m-%dT%H:%M:%S.%f')
+                elif key == 'updated_at':
+                    self.updated_at = datetime.strptime(value,
+                                                        '%Y-%m-%dT%H:%M:%S.%f')
+                else:
+                    if key != "__class__":
+                        setattr(self, key, value)
         else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = self.created_at
             models.storage.new(self)
 
     def __str__(self):
-        """Return the instance's ID, class name, and attributes as a string"""
+         """Return the instance's ID, class name, and attributes as a string"""
 
-        return '[{}] ({}) {}'.format(
-            type(self).__name__,
-            self.id,
-            str(self.__dict__)
-        )
+	return "[{}] ({}) {}".format(
+                self.__class__.__name__,
+                self.id,
+                self.__dict__)
 
     def save(self):
         """ Save the object into .json file and updates the attribute
         'updated_at' with current time"""
-
-        self.updated_at = datetime.now()
+	
+	self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """Returns dictionary with keys/values of __dict__ of the instance"""
-
-        dictionary = dict(self.__dict__)
-        dictionary["__class__"] = type(self).__name__
-        dictionar["created_at"] = self.created_at.isoformat()
-        dictionary["updated_at"] = self.updated_at.isoformat()
-        return dictionary
+        """ Returns a dictionary with keys/values of __dict__
+        of the instance
+        """
+        new_dict = dict(self.__dict__)
+        new_dict["created_at"] = self.created_at.isoformat(sep='T')
+        new_dict["updated_at"] = self.updated_at.isoformat(sep='T')
+        new_dict["__class__"] = self.__class__.__name__
+        return new_dict
