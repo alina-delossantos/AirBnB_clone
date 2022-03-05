@@ -35,7 +35,7 @@ class HBNBCommand(cmd.Cmd):
         """Handles End Of File character\n"""
         return True
 
-    def do_quit(self, arg):
+    def do_quit(self, args):
         """Quit command to exit the program\n"""
         exit(0)
 
@@ -51,18 +51,17 @@ class HBNBCommand(cmd.Cmd):
         Example:
             $ create BaseModel"""
 
-        try:
-            arguments = args.split()
-        if args == "" or args is None:
+        args = shlex.split(args)
+        if len(args) == 0:
             print("** class name missing **")
-            return
-        elif args not in storage.classes():
+            return False
+        if args[0] in classes:
+            instance = classes[args[0]]()
+        else:
             print("** class doesn't exist **")
-            return
-
-        obj = models.classes[args]()
-        models.storage.save()
-        self.__print(obj.id)
+            return False
+        print(instance.id)
+        instance.save()
 
     def do_show(self, args):
             """ Prints the string representation of an instance
