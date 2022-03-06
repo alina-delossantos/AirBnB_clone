@@ -10,12 +10,12 @@ class BaseModel:
     """ BaseModel defines all common attributes/methods for other classes """
 
     def __init__(self, *args, **kwargs):
-         """Initialization of a Base instance.
+        """Initialization of a Base instance.
         Args:
             - *args: list of arguments
             - **kwargs: dict of key-values arguments
         """
-         self.id = str(uuid4())
+        self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
         if len(kwargs) > 0:
@@ -33,9 +33,9 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-         """Return the instance's ID, class name, and attributes as a string"""
+        """Return the instance's ID, class name, and attributes as a string"""
 
-         return "[{}] ({}) {}".format(
+        return "[{}] ({}) {}".format(
                 self.__class__.__name__,
                 self.id,
                 self.__dict__)
