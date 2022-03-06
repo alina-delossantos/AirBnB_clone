@@ -32,14 +32,6 @@ class BaseModel:
         else:
             models.storage.new(self)
 
-    def __str__(self):
-        """Return the instance's ID, class name, and attributes as a string"""
-
-        return "[{}] ({}) {}".format(
-                self.__class__.__name__,
-                self.id,
-                self.__dict__)
-
     def save(self):
         """ Save the object into .json file and updates the attribute
         'updated_at' with current time"""
@@ -56,3 +48,8 @@ class BaseModel:
         new_dict["updated_at"] = self.updated_at.isoformat(sep='T')
         new_dict["__class__"] = self.__class__.__name__
         return new_dict
+
+        def __str__(self):
+            """Return the instance's ID, class name, and attributes as a string"""
+            return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
+                                         self.__dict__)
