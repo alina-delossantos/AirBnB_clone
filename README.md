@@ -1,176 +1,162 @@
 # Project: 0x00. AirBnB Clone.
 
+`Release date: March-07-2022`
+
 ![hbnb](https://i.imgur.com/XyXPuZ9.png)
 
-### General
+## 0x00.Table of contents
+* [0x01 Introduction](#0x01-Introduction)
+* [0x02 Environment](#0x02-Environment)
+* [0x03 Installation](#0x03-Installation)
+* [0x04 Testing](#0x04-Testing)
+* [0x05 Usage](#0x05-Usage)
+* [0x06 Authors](#0x06-Authors)
 
--   How to create a Python package
--   How to create a command interpreter in Python using the `cmd` module
--   What is Unit testing and how to implement it in a large project
--   How to serialize and deserialize a Class
--   How to write and read a JSON file
--   How to manage `datetime`
--   What is an `UUID`
--   What is `*args` and how to use it
--   What is `**kwargs` and how to use it
--   How to handle named arguments in a function
+## 0x01 Introduction
 
-## Requirements
+-   School project to develop an Airbnb clone.
+-   Our console is a command interpreter that performs the below tasks
+    - create a new object
+    - retrieve an object
+    - performs a number of operations on an object
+    - destroy an object
 
-### Python Scripts
+### Storage
+All the classes are handled within our `FileStorage` Class.
 
--   Allowed editors: `vi`, `vim`, `emacs`
--   All your files will be interpreted/compiled on Ubuntu 14.04 LTS using `python3` (version 3.4.3)
--   All your files should end with a new line
--   The first line of all your files should be exactly `#!/usr/bin/python3`
--   A `README.md` file, at the root of the folder of the project, is mandatory
--   Your code should use the `PEP 8` style (version 1.7 or more)
--   All your files must be executable
--   The length of your files will be tested using `wc`
--   All your modules should have a documentation (`python3 -c 'print(__import__("my_module").__doc__)'`)
--   All your classes should have a documentation (`python3 -c 'print(__import__("my_module").MyClass.__doc__)'`)
--   All your functions (inside and outside a class) should have a documentation (`python3 -c 'print(__import__("my_module").my_function.__doc__)'` and `python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'`)
--   A documentation is not a simple word, it’s a real sentence explaining what’s the purpose of the module, class or method (the length of it will be verified)
+## 0x02 Environment
+<!-- ubuntu -->
+<a href="https://ubuntu.com/" target="_blank"> <img height="" src="https://img.shields.io/static/v1?label=&message=Ubuntu&color=E95420&logo=Ubuntu&logoColor=E95420&labelColor=2F333A" alt="Suite CRM"></a> <!-- bash --> <a href="https://www.gnu.org/software/bash/" target="_blank"> <img height="" src="https://img.shields.io/static/v1?label=&message=GNU%20Bash&color=4EAA25&logo=GNU%20Bash&logoColor=4EAA25&labelColor=2F333A" alt="terminal"></a> <!-- python--> <a href="https://www.python.org" target="_blank"> <img height="" src="https://img.shields.io/static/v1?label=&message=Python&color=FFD43B&logo=python&logoColor=3776AB&labelColor=2F333A" alt="python"></a> </a> <!-- git --> <a href="https://git-scm.com/" target="_blank"> <img height="" src="https://img.shields.io/static/v1?label=&message=Git&color=F05032&logo=Git&logoColor=F05032&labelColor=2F333A" alt="git distributed version control system"></a> <!-- github --> <a href="https://github.com" target="_blank"> <img height="" src="https://img.shields.io/static/v1?label=&message=GitHub&color=181717&logo=GitHub&logoColor=f2f2f2&labelColor=2F333A" alt="Github"></a>
+ <!-- Style guidelines -->
+* Style guidelines:
+  * [pycodestyle (version 2.7.*)](https://pypi.org/project/pycodestyle/)
+  * [PEP8](https://pep8.org/)
 
-### Python Unit Tests
-
--   Allowed editors: `vi`, `vim`, `emacs`
--   All your files should end with a new line
--   All your test files should be inside a folder `tests`
--   You have to use the [unittest module](https://intranet.hbtn.io/rltoken/QX7d4D__xhOJIGIWZBp39g "unittest module")
--   All your test files should be python files (extension: `.py`)
--   All your test files and folders should start by `test_`
--   Your file organization in the tests folder should be the same as your project
--   e.g., For `models/base_model.py`, unit tests must be in: `tests/test_models/test_base_model.py`
--   e.g., For `models/user.py`, unit tests must be in: `tests/test_models/test_user.py`
--   All your tests should be executed by using this command: `python3 -m unittest discover tests`
--   You can also test file by file by using this command: `python3 -m unittest tests/test_models/test_base_model.py`
--   All your modules should have a documentation (`python3 -c 'print(__import__("my_module").__doc__)'`)
--   All your classes should have a documentation (`python3 -c 'print(__import__("my_module").MyClass.__doc__)'`)
--   All your functions (inside and outside a class) should have a documentation (`python3 -c 'print(__import__("my_module").my_function.__doc__)'` and `python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'`)
--   We strongly encourage you to work together on test cases, so that you don’t miss any edge case
-
-## Unittests
-We did the testing of our classes with the unittest module, making sure that we do not have any case left without considering
-
-## Console.
-
-### Objetives
-
-The objective of the console is mainly to be able to control the objects of our project:
- - Create a new object (ex: a new User or a new Place)
- - Retrieve an object from a file, a database etc…
- - Do operations on objects (count, compute stats, etc…)
- - Update attributes of an object
- - Destroy an object
-
-### Commands
- - **quit** or **EOF** exit the program. Ex:
+## 0x03 Installation
+```bash
+git clone https://github.com/Lulimsky/AirBnB_clone.git
 ```
-(hbnb) quit
-root@7e0c3c33ccb3:~/airbnb#
+change to the `AirBnB_clone` directory and run the below command:
+```bash
+ ./console.py
 ```
- - **help** displays a brief description of the specified command. Ex:
-```
+### Execution
+Interactive mode
+```bash
+$ ./console.py
 (hbnb) help
 Documented commands (type help <topic>):
 ========================================
 EOF  all  create  destroy  help  quit  show  update
 (hbnb)
+(hbnb)
+(hbnb) quit
+$
 ```
- - **create** create a new instance of BaseModel, saves it (to the JSON file) and prints the `id`. Ex:
+Non-interactive mode
+```bash
+$ echo "help" | ./console.py
+(hbnb)
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+(hbnb)
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+(hbnb)
+$
 ```
-(hbnb) create User
-63bdfac2-cff1-465f-81b0-41e00bd1af17
+
+## 0x04 Testing
+Tests are located within our `tests` folder.
+
+### Python Unit Tests
+* unittest module
+* File extension ``` .py ```
+* Files and folders star with ```test_```
+* Execution command: ```python3 -m unittest discover tests```
+* or: ```python3 -m unittest tests/test_models/test_base.py```
+### run test in interactive mode
+```bash
+echo "python3 -m unittest discover tests" | bash
 ```
- - **show** prints the string representation of an instance based on the `class name` and `id`. Ex:
+### run test in non-interactive mode
+To run the tests in non-interactive mode, and discover all the test, you can use the below command:
+```bash
+python3 -m unittest discover tests
 ```
-(hbnb) show User 63bdfac2-cff1-465f-81b0-41e00bd1af17
-[User] (63bdfac2-cff1-465f-81b0-41e00bd1af17) {'id': '63bdfac2-cff1-465f-81b0-41e00bd1af17', 'updated_at': datetime.datetime(2021, 6, 26, 1, 34, 37, 393154), 'created_at': datetime.datetime(2021, 6, 26, 1, 34, 37, 392708)}
+
+## 0x05 Usage
+* Start the console in interactive mode:
+```bash
+$ ./console.py
 (hbnb)
 ```
- - **destroy** deletes an instance based on the class name and id (save the change into the JSON file). Ex:
-```
-(hbnb) destroy User 63bdfac2-cff1-465f-81b0-41e00bd1af17
+* Use help to see the available commands:
+```bash
+(hbnb) help
+Documented commands (type help <topic>):
+========================================
+EOF  all  count  create  destroy  help  quit  show  update
 (hbnb)
 ```
- - **all** prints all string representation of all instances based or not on the class name. Ex:
+* Quit the console:
+```bash
+(hbnb) quit
+$
 ```
-(hbnb) all User
-[[User] (0fed14f5-df97-413f-9686-c55a6741c687) {'id': '0fed14f5-df97-413f-9686-c55a6741c687', 'updated_at': datetime.datetime(2021, 6, 26, 0, 57, 4, 16982), 'created_at': datetime.datetime(2021, 6, 26, 0, 57, 4, 16478)}]
+
+### Commands
+
+* Create
+> *Creates a new instance of a given class. The class' ID is printed and the instance is saved to the file file.json.*
+```bash
+create <class>
+```
+```bash
+(hbnb) create BaseModel
+7dhe56v4-b748-5df7-bf02-6754765f8765
 (hbnb)
 ```
- - **update** Updates an instance based on the class name and `id` by adding or updating attribute (save the change into the JSON file). Ex:
+
+* Show
+```bash
+show <class> <id>
 ```
-(hbnb) update User 0fed14f5-df97-413f-9686-c55a6741c687 email "aibnb@holbertonschool.com"
-(hbnb) show User 0fed14f5-df97-413f-9686-c55a6741c687
-[User] (0fed14f5-df97-413f-9686-c55a6741c687) {'id': '0fed14f5-df97-413f-9686-c55a6741c687', 'created_at': datetime.datetime(2021, 6, 26, 0, 57, 4, 16478), 'updated_at': datetime.datetime(2021, 6, 26, 1, 41, 52, 402202), 'email': 'aibnb@holbertonschool.com'}
+
+```bash
+(hbnb) show BaseModel 7dhe56v4-b748-5df7-bf02-6754765f8765
+[BaseModel] (a) [BaseModel] (7dhe56v4-b748-5df7-bf02-6754765f8765) {'id': '7dhe56v4-b748-5df7-bf02-6754765f8765', 'created_at': datetime.datetime(2022, 3, 7, 3, 28, 45, 571360), 'updated_at': datetime.datetime(2022, 3, 7, 3, 28, 45, 571389)}
 (hbnb)
 ```
+* Destroy
+> *Deletes an instance of a given class with a given id and updates the JSON file*
+```bash
+(hbnb) create BaseModel
+7dhe56v4-b748-5df7-bf02-6754765f8765
+(hbnb) destroy BaseModel 7dhe56v4-b748-5df7-bf02-6754765f8765
+(hbnb) show BaseModel 7dhe56v4-b748-5df7-bf02-6754765f8765
+** no instance found **
+(hbnb)
+```
+* all
+> *Prints all string representation of all instances of a given class.*
+> *If no class is passed, all classes are printed.*
+```bash
+(hbnb) create BaseModel
+7dhe56v4-b748-5df7-bf02-6754765f8765
+(hbnb) all BaseModel
+["[BaseModel] (7dhe56v4-b748-5df7-bf02-6754765f8765) [BaseModel] (7dhe56v4-b748-5df7-bf02-6754765f8765) {'id': '7dhe56v4-b748-5df7-bf02-6754765f8765', 'created_at': datetime.datetime(2021, 11, 13, 22, 19, 19, 447155), 'updated_at': datetime.datetime(2021, 11, 13, 22, 19, 19, 447257), 'name': 'Alto Modelo', 'my_number': 77}"]
+["[BaseMode
+```
 
-## __init__
-Python file that create a unique FileSotrage instance for it application.
-It contains:
+## 0x06 Authors
 
- - import `file_storage.py`
- - create the variable  `storage`, an instance of  `FileStorage`
- - call  `reload()`  method on this variable
-
-## BaseModel
-We create a base class called BaseModel, from which the rest of the more specific classes will inherit. In this class all common attributes and methods were defined.
-
- - Initialize with `__init__(self, *args, **kwargs)`
-   - Where `*args` does not exist and `**kwargs` will be used to save the created objects in a `.json` file
-   - if it’s a new instance (not from a dictionary representation), call to the method `new(self)` on `storage`
- - Public instance attributes:
-   - `id` assigned with an `uuid` when an instance is created
-   - `created_at`: datetime - assign with the current datetime when an instance is created
-   - `updated_at`: datetime - assign with the current datetime when an instance is created and it will be updated every time you change your object
- - `__str__`: should print: `[<class name>] (<self.id>) <self.__dict__>`
- - Public instance methods:
-   - `save(self)`: updates the public instance attribute  `updated_at`  with the current datetime
-     - call `save(self)` method of `storage`
-   - `to_dict(self)`: returns a dictionary containing all keys/values of `__dict__` of the instance:
-
-## FileStorage
-We create a FileStorage class that serializes instances to a JSON file and deserializes JSON file to instances:
-
- - Private class attributes:
-   - `__file_path`: string - path to the JSON file (ex: `file.json`)
-   - `__objects`: dictionary - empty but will store all objects by `<class name>.id` (ex: to store a `BaseModel` object with `id=12121212`, the key will be `BaseModel.12121212`)
- - Public instance methods:
-   - `all(self)`: returns the dictionary `__objects`
-   - `new(self, obj)`: sets in  `__objects`  the  `obj`  with key  `<obj class name>.id`
-   - `save(self)`: serializes  `__objects`  to the JSON file (path:  `__file_path`)
-   - `reload(self)`: deserializes the JSON file to  `__objects`  (only if the JSON file (`__file_path`) exists ; otherwise, do nothing. If the file doesn’t exist, no exception should be raised)
-
-## Inherited objects from BaseModel
-We have added different classes that will be used in future projects with their respective public attributes:
- - **User**
-   - `email`: string - empty string
-   - `password`: string - empty string
-   - `first_name`: string - empty string
-   - `last_name`: string - empty string
- - **State**
-   - `name`: string - empty string
- - **City**
-   - `state_id`: string - empty string: it will be the `State.id`
-   - `name`: string - empty string
- - **Amenity**
-   - `name`: string - empty string
- - **Place**
-   - `city_id`: string - empty string: it will be the  `City.id`
-   - `user_id`: string - empty string: it will be the  `User.id`
-   - `name`: string - empty string
-   - `description`: string - empty string
-   - `number_rooms`: integer - 0
-   - `number_bathrooms`: integer - 0
-   - `max_guest`: integer - 0
-   - `price_by_night`: integer - 0
-   - `latitude`: float - 0.0
-   - `longitude`: float - 0.0
-   - `amenity_ids`: list of string - empty list: it will be the list of  `Amenity.id`  later
- - **Review**
-   - `place_id`: string - empty string: it will be the  `Place.id`
-   - `user_id`: string - empty string: it will be the  `User.id`
-   - `text`: string - empty string
+> *Lucila Mociulsky & Alina de los Santos*
