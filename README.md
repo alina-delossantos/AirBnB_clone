@@ -11,7 +11,7 @@
 * [0x04 Testing](#0x04-Testing)
 * [0x05 Usage](#0x05-Usage)
 
-### Introduction
+## 0x01 Introduction
 
 -   School project to develop an Airbnb clone.
 -   Our console is a command interpreter that performs the below tasks
