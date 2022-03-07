@@ -31,3 +31,46 @@ All the classes are handled by our `Storage` engine within our `FileStorage` Cla
   * [pycodestyle (version 2.7.*)](https://pypi.org/project/pycodestyle/)
   * [PEP8](https://pep8.org/)
 
+## 0x03 Installation
+```bash
+git clone https://github.com/Lulimsky/AirBnB_clone.git
+```
+change to the `AirBnB_clone` directory and run the below command:
+```bash
+ ./console.py
+```
+### Execution
+In interactive mode
+```bash
+$ ./console.py
+(hbnb) help
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb)
+(hbnb)
+(hbnb) quit
+$
+```
+in Non-interactive mode
+```bash
+$ echo "help" | ./console.py
+(hbnb)
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+(hbnb)
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+(hbnb)
+$
+```
+
+
