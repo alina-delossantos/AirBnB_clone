@@ -22,7 +22,7 @@
     - destroy an object
 
 ### Storage
-All the classes are handled by our `Storage` engine within our `FileStorage` Class.
+All the classes are handled within our `FileStorage` Class.
 
 ## 0x02 Environment
 <!-- ubuntu -->
@@ -88,7 +88,7 @@ Tests are located within our `tests` folder.
 echo "python3 -m unittest discover tests" | bash
 ```
 ### run test in non-interactive mode
-To run the tests in non-interactive mode, and discover all the test, you can use the command:
+To run the tests in non-interactive mode, and discover all the test, you can use the below command:
 ```bash
 python3 -m unittest discover tests
 ```
@@ -132,17 +132,17 @@ show <class> <id>
 ```
 
 ```bash
-(hbnb) show BaseModel 6cfb47c4-a434-4da7-ac03-2122624c3762
-[BaseModel] (a) [BaseModel] (6cfb47c4-a434-4da7-ac03-2122624c3762) {'id': '6cfb47c4-a434-4da7-ac03-2122624c3762', 'created_at': datetime.datetime(2021, 11, 14, 3, 28, 45, 571360), 'updated_at': datetime.datetime(2021, 11, 14, 3, 28, 45, 571389)}
+(hbnb) show BaseModel 7dhe56v4-b748-5df7-bf02-6754765f8765
+[BaseModel] (a) [BaseModel] (7dhe56v4-b748-5df7-bf02-6754765f8765) {'id': '7dhe56v4-b748-5df7-bf02-6754765f8765', 'created_at': datetime.datetime(2022, 3, 7, 3, 28, 45, 571360), 'updated_at': datetime.datetime(2022, 3, 7, 3, 28, 45, 571389)}
 (hbnb)
 ```
 * Destroy
 > *Deletes an instance of a given class with a given id and updates the JSON file*
 ```bash
 (hbnb) create BaseModel
-0c98d2b8-7ffa-42b7-8009-d9d54b69a472
-(hbnb) destroy BaseModel 0c98d2b8-7ffa-42b7-8009-d9d54b69a472
-(hbnb) show BaseModel 0c98d2b8-7ffa-42b7-8009-d9d54b69a472
+7dhe56v4-b748-5df7-bf02-6754765f8765
+(hbnb) destroy BaseModel 7dhe56v4-b748-5df7-bf02-6754765f8765
+(hbnb) show BaseModel 7dhe56v4-b748-5df7-bf02-6754765f8765
 ** no instance found **
 (hbnb)
 ```
@@ -151,9 +151,9 @@ show <class> <id>
 > *If no class is passed, all classes are printed.*
 ```bash
 (hbnb) create BaseModel
-e45ddda9-eb80-4858-99a9-226d4f08a629
+7dhe56v4-b748-5df7-bf02-6754765f8765
 (hbnb) all BaseModel
-["[BaseModel] (4c8f7ebc-257f-4ed1-b26b-e7aace459897) [BaseModel] (4c8f7ebc-257f-4ed1-b26b-e7aace459897) {'id': '4c8f7ebc-257f-4ed1-b26b-e7aace459897', 'created_at': datetime.datetime(2021, 11, 13, 22, 19, 19, 447155), 'updated_at': datetime.datetime(2021, 11, 13, 22, 19, 19, 447257), 'name': 'My First Model', 'my_number': 89}"]
+["[BaseModel] (7dhe56v4-b748-5df7-bf02-6754765f8765) [BaseModel] (7dhe56v4-b748-5df7-bf02-6754765f8765) {'id': '7dhe56v4-b748-5df7-bf02-6754765f8765', 'created_at': datetime.datetime(2021, 11, 13, 22, 19, 19, 447155), 'updated_at': datetime.datetime(2021, 11, 13, 22, 19, 19, 447257), 'name': 'Alto Modelo', 'my_number': 77}"]
 ["[BaseMode
 ```
 
