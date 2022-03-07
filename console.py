@@ -74,16 +74,16 @@ class HBNBCommand(cmd.Cmd):
             if not args:
                 print("** class name missing **")
                 return
-            elif arguments[0] not in storage.classes():
+            elif arguments[0] not in classes:
                 print("** class doesn't exist **")
                 return
             elif len(arguments) == 1:
                 print("** instance id missing **")
                 return
             else:
-                key = args[0] + "." + args[1]
-                if key in models.storage.all():
-                    print(models.storage.all()[key])
+                key = arguments[0] + "." + arguments[1]
+                if key in models.storage.all().keys():
+                    print(models.storage.all()[key].__str__())
                 else:
                     print("** no instance found **")
 
@@ -120,8 +120,8 @@ class HBNBCommand(cmd.Cmd):
         Example:
             $ all BaseModel or $ all"""
 
-        args = parse(arg)
-        if len(args) > 0 and args[0] not in HBNBCommand.__classes:
+        args = split(args)
+        if len(args) > 0 and args[0] not in classes:
             print("** class doesn't exist **")
         else:
             obj_list = []
